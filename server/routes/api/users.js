@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 import passport from 'passport';
 import User from '../../models/User';
 import keys from '../../config/keys';
+import validateRegisterInput from '../../validation/register';
 
 const router = express.Router();
 
@@ -20,6 +21,10 @@ router.get('/test', (req, res) => {
 // @access public
 
 router.post('/register', (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   const { email, password, name } = req.body;
   const avatar = gravatar.url(email, {
     s: '200', // avatar image size
@@ -50,9 +55,14 @@ router.post('/register', (req, res) => {
     });
     return null;
   });
+  return null;
 });
 
 router.post('/login', (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   const { email, password } = req.body;
   // find user by email in mongoose
   User.findOne({ email }).then((user) => {
@@ -88,6 +98,7 @@ router.post('/login', (req, res) => {
     });
     return null;
   });
+  return null;
 });
 
 // @route GET api/users/current
