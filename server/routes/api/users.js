@@ -6,6 +6,7 @@ import passport from 'passport';
 import User from '../../models/User';
 import keys from '../../config/keys';
 import validateRegisterInput from '../../validation/register';
+import validateLoginInput from '../../validation/login';
 
 const router = express.Router();
 
@@ -59,7 +60,7 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  const { errors, isValid } = validateRegisterInput(req.body);
+  const { errors, isValid } = validateLoginInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }
