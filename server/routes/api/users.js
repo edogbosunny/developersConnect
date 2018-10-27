@@ -2,6 +2,7 @@ import express from 'express';
 import gravatar from 'gravatar';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import passport from 'passport';
 import User from '../../models/User';
 import keys from '../../config/keys';
 
@@ -88,4 +89,22 @@ router.post('/login', (req, res) => {
     return null;
   });
 });
+
+// @route GET api/users/current
+// @desc  return currnt user
+// @access private
+
+router.get(
+  '/current',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const {
+      id, name, email, avatar,
+    } = req.user;
+    return res.json({
+      id, name, email, avatar,
+    });
+  },
+);
+
 export default router;
