@@ -59,11 +59,10 @@ const ProfileSchema = new Schema({
       location: {
         type: String,
       },
-      from: {
-        type: Date,
-        required: true,
-      },
       to: {
+        type: Date,
+      },
+      from: {
         type: Date,
       },
       current: {
