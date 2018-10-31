@@ -21,7 +21,8 @@
       "no-unused-vars":"off",
       "no-param-reassign": 0,
       "no-dupe-keys":"off",
-      "no-shadow":"off"
+      "no-shadow":"off",
+      "no-underscore-dangle":"off"
     }
   }
   
