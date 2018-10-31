@@ -5,7 +5,7 @@ import passport from 'passport';
 import keys from './server/config/keys';
 import users from './server/routes/api/users';
 import profile from './server/routes/api/profile';
-import posts from './server/routes/api/post';
+import posts from './server/routes/api/posts';
 
 const port = process.env.PORT || 5000;
 
