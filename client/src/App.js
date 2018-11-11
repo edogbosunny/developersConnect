@@ -13,7 +13,7 @@ import Login from './component/layout/auth/Login';
 import './App.css';
 
 //check for token
-if(localStorage.jwtToken) {
+if(localStorage.getItem('jwtToken')) {
 // set auth token heaader auth
 setAuthToken(localStorage.jwtToken);
 // decode token and get user info
@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <Provider store = { store }>
       <Router>
-      <div className='App'>
+      <div>
         <Navbar />
         <Route exact path ='/' component={ Landing } />
         <div className = 'container'>

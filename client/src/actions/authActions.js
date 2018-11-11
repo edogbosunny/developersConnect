@@ -50,7 +50,7 @@ export const loginUser = userData => dispatch => {
 
   export const logoutUser = () =>  dispatch => {
     //Remove token from local storage
-    localStorage.getItem('jwtToken');
+    localStorage.removeItem('jwtToken');
     // Remove authheader from feature request
     setAuthToken(false);
     // set current user to {} which will set isAuthenticated to false
